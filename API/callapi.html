@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script>
+            function callApi(){
+                let apiRequest = new XMLHttpRequest();
+                apiRequest.onreadystatechange = function (){
+                    if(apiRequest.readyState == 4){
+                        // console.log(apiRequest.responseText)
+                        document.getElementById("apiResponseArea").innerText = apiRequest 
+                    }
+                }
+                apiRequest.open("GET","https://api.thecatapi.com/v1/breeds");
+                apiRequest.send();
+            }
+        </script>
+    </head>
+   <body><button onclick="callApi()">Call Api</button>
+    <div id="apiResponseArea">
+
+    </div>
+   </body>
+</html>

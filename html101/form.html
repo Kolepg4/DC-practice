@@ -1,0 +1,31 @@
+<html>
+    <header>
+        <script> 
+        validateForm(){
+            const bookNames 
+        }
+        </script>
+   </header>
+    <body>
+        <form>
+            Book Name:<input type ="text" id="bname" value ="" maxlength = "50" /></label><br>
+            ISBN:<input type="text" id="isbn" value="" minlength="13" required/><br>
+            <label for="Ages" >Select Ages:</label>
+            <select id="Ages"  name="Ages" required>
+                <option value = "All Ages">All Ages</option>
+                <option value = "6 and up">6 and up</option>
+                <option value = "13 and up">13 and up</option>
+            </select ><br>
+            <label>Book Type:</label><br>
+                <input type="radio" id="kindle" name="booktype" value="kindle" required>
+            <label for="kindle">Kindle</label><br>
+                <input type="radio" id="hardcover" name="booktype" value="hardcover" required>
+            <label for="css">Hardcover</label><br>
+                <input type="radio" id="cd" name="booktype" value="cd" required>
+            <label for="cd">CD</label><br>
+            <label>Price:</label>
+            <input type ="price" id = "price" placeholder="$00.00" pattern="[$][0-9]{2}.[0-9]{2}" required><br>
+            <input type="submit" value="Submit"/>
+        </form>
+    </body>
+</html>

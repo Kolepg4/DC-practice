@@ -1,0 +1,22 @@
+// Given two integer arrays, find the numbers that is found in both arrays. the resulting output would be the array with all those numbers
+// Example:
+// a = [30,2,3,5,90]
+// b = [9,2,6,5,100]
+// output c = [2,5]
+
+let a = []
+let b = []
+let c = []// results will go into a new array
+
+function numFind(a,b){
+    for(i=0;i<a.length;i++){      //loops through array a
+        
+        for(j=0;j<b.length;j++){    //loops through array b
+            if(a[i]==b[j]){
+                c.push(a[i])//pushes array a into the c array
+            };
+        };
+    };
+console.log(c);
+}
+numFind([30,2,3,5,90],[2,12,5,31,100])

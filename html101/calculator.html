@@ -1,0 +1,99 @@
+<!-- <html>
+   <head>
+        <style>
+          .gridStyle{
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px ;
+    border-color: black;
+    border-style: solid;
+    width: 200px;
+}  
+        </style>
+   </head>
+   <body>
+        <div class="gridStyle" >
+        <div> % </div>
+        <div> CE </div>
+        <div> C </div>
+        <div> BS </div>
+        <div> 1 </div>
+        <div> 2 </div>
+        <div> 3 </div>
+        <div> X </div>
+        <div> 4 </div>
+        <div> 5 </div>
+        <div> 6 </div>
+        <div> - </div>
+        <div> 7 </div>
+        <div> 8 </div>
+        <div> 9 </div>
+        <div> + </div>
+        <div> +/- </div>
+        <div> 0 </div>
+        <div> . </div>
+        <div> = </div>
+       </div>
+    </body>
+</html> -->
+
+<html>
+    <head>
+        <style>
+            .calc{
+                display:flex;
+                flex-wrap: wrap;
+                max-width: 400px;
+            }
+            button{
+                flex-basis:25%;
+                font-size: 25px;
+                padding: 10px;
+                background-color: plum;
+                justify-content: flex-end;
+            }
+        </style>
+        <script>
+            function calculator(){
+                let inputText = '';
+                let number1 = 0;
+                let number2 = 0;
+                let number3 = '';
+                document.addEventListener('click', event =>{
+                    let buttonClickedText = event.target.innerText;
+                    if(buttonClickedText == '+' || buttonClickedText == '-' || buttonClickedText == '/' || buttonClickedText == 'x' ||){
+                        number1=parseInt(inputText)  //turns the string into a number
+                        inputText='';
+                        operator = buttonClickedText;
+                    }else if(buttonClickedText == '='){
+                        number2 = parseInt(inputText);
+    
+                    }else if{
+                    
+                        inputText+inputText=buttonClickedText
+
+                }                
+            }    
+        }
+        </script>
+    </head>
+    <body>
+        <div class="calc">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>+</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>-</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>x</button>
+            <button>C</button>
+            <button>0</button>
+            <button>=</button>
+            <button>/</button>
+        </div>
+    </body>
+</html>

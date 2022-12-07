@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <style>
+            .parentContainerStyle {
+                display: flex;
+                flex-direction: row;
+                width: 1500px;
+                /* background-color: aquamarine;
+                width: 900px;
+                height: 600px; */
+            }
+            .catListContainerStyle {
+                display: flex;
+                flex-direction: column;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .catImageContainerStyle {
+                display: flex;
+                flex-direction: row;
+            }
+            .catRowStyle{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        </style>        
+        <script>
+            function renderImage(imageUrl){
+                const imageTag = document.getElementById("catImg");
+                imageTag.src   = imageUrl;
+            }
+
+            function callApi(){
+                let apiRequest = new XMLHttpRequest(); //lets you call an api to use
+                apiRequest.onreadystatechange = function () { 
+                    if(apiRequest.readyState  == 4){//this tells coding what to do with the info from the api
+                        // console.log(apiRequest.responseText);
+                        const jsonFormatResponse = JSON.parse(apiRequest.responseText);
+                        const catListContainerDiv= document.getElementById("catListContainer");
+                        for(let i=0;i<jsonFormatResponse.length;i++){
+                            const catInfo = jsonFormatResponse[i];
+                            const catRow  = document.createElement("div"); //creates a div for each row
+                            catRow.className = "catRowStyle";
+                            const nameColumn = document.createElement("span")
+                            nameColumn.innerText = catInfo.name;
+                            catRow.appendChild(nameColumn);
+
+                            const tempColumn = document.createElement("span")
+                            tempColumn.innerText = catInfo.temperament;
+                            catRow.appendChild(tempColumn);
+
+                            // const descColumn = document.createElement("span")
+                            // descColumn.innerText = catInfo.description;
+                            // catRow.appendChild(descColumn);
+
+                            const imgColumn = document.createElement("span")
+                            const imgHref   = document.createElement("a");
+                            imgHref.innerText = "Image";
+                            imgHref.href    = "#";
+                            imgHref.addEventListener('click',()=>{
+                                renderImage(catInfo.image.url);
+                            })
+                            imgColumn.appendChild(imgHref);
+                            catRow.appendChild(imgColumn);
+
+                            catListContainerDiv.appendChild(catRow);
+                        }
+                        // console.log(jsonFormatResponse[0]);
+                        // document.getElementById("apiResponseArea").innerText = apiRequest.responseText;
+                    }
+                }
+                apiRequest.open("GET","https://api.thecatapi.com/v1/breeds"); //call the api using the GET method, similar to the postman
+                apiRequest.send();//send the request to the api called and get a response back
+            }
+        </script>        
+    </head>
+
+    <body>
+        <button onclick="callApi()">Call Api</button>
+        <div id="parentContainer" class="parentContainerStyle">
+            <div id="catListContainer" class="catListContainerStyle"></div>
+            <div id="catImageContainer" class="catImageContainerStyle">
+                <img id="catImg" width="200px" height="200px"/>
+            </div>
+        </div>
+    </body>
+</html>
